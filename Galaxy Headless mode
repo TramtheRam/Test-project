@@ -1,0 +1,39 @@
+Running Galaxy lights in headless mode
+
+To run the Galaxy lights in headless mode (script runs when the pi turns on without neededing a screen)
+you will need to edit rc.local system file on your raspberry pi. 
+
+since rc.local is a system file you will need root access to edit it. 
+
+Using the comand terminal type
+
+sudo nano /etc/rc.local
+
+this will open rc.local to be edited. Add comamands below the comment
+but leave the line exit 0 at the end. 
+
+Example:
+
+#
+#
+sudo python /home/pi/Downloads/ZebraGalaxy-master/galaxy.py &
+
+exit 0
+
+to save changes hold Ctrl + X 
+then press Y and Enter to save changes
+
+
+Tips:  
+
+	always add an ampersand (&) to the end of a looping script such as the Galaxy.py and runcolorcyle.py scripts
+The ampersand allows the command to run in a separate process and contunie to boot, with out it the script
+Will not end and the pi will not boot up.
+
+	The command line is the full path name of what script you wish to run 
+if you have moved the file from the defualt downloads folder you will need to locate the file
+location and change the command path, for example if it was moved to the desktop the path might look like /home/pi/Desktop/ZebraGalaxy-master/galaxy.py
+
+	Check the script you want to run in python before setting it to run in headless mode
+if for some reason the script runs fine in python's shell but not in headless mode check to make
+sure the propper path was writen down
